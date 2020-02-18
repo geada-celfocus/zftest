@@ -6,6 +6,7 @@ class UsersController extends Zend_Controller_Action{
 
     public function createAction(){
 
+        // initialize form
         $form = new UserForm();
         $form->submit->setLabel("Create");
 
@@ -13,17 +14,16 @@ class UsersController extends Zend_Controller_Action{
 
         if($this->_request->isPost()){
         
-            // $user = new User
             $data = $this->_request->getPost();
 
             if($form->isValid($data)){
 
                 $user = new Users();
-                $row = $user->createRow();
+                $row = $user->createRow();//create and empty row
                 $row->name = $this->_request->getPost("name");
                 $row->username = $this->_request->getPost("username");
                 $row->password = AuthController::hash_password( $this->_request->getPost("password") );
-                $row->save();
+                $row->save();//update the empty row data
 
                 $this->_redirect("/auth/login");
 
