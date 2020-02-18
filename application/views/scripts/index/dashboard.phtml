@@ -1,0 +1,4 @@
+<?php global $config; ?>
+<h1>Welkome tillbag, <?php echo Zend_Auth::getInstance()->getIdentity(); ?>!</h1>
+
+<p><?php var_dump( Zend_Auth::getInstance()->getStorage()->read() ) ?>

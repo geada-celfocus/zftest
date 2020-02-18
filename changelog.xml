@@ -1,0 +1,37 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="vagrant (generated)" id="1582025807346-1">
+        <createTable tableName="users">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="access_level" type="INTEGER"/>
+            <column defaultValueNumeric="0" name="active" type="TINYINT(1)"/>
+            <column defaultValueNumeric="0" name="locked" type="TINYINT(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1582025807346-2">
+        <createTable tableName="users_access">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permition_level" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1582025807346-3">
+        <createIndex indexName="sqlite_autoindex_users_1" tableName="users" unique="true">
+            <column name="username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vagrant (generated)" id="1582025807346-4">
+        <addForeignKeyConstraint baseColumnNames="access_level" baseTableName="users" constraintName="" deferrable="true" initiallyDeferred="true" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="" referencedTableName="users_access" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
