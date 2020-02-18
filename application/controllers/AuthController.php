@@ -59,7 +59,7 @@ class AuthController extends Zend_Controller_Action{
                             array( "active" => "1"),//fields 
                             array("id" => $resultObj->id)//where
                         );
-                        $this->_redirect("/index/dashboard");
+                        $this->_redirect("/dashboard");
                     }else throw new Exception( $result->getMessages()[0]);
 
                 } catch(Exception $e){
