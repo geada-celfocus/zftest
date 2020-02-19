@@ -1,8 +1,9 @@
 <?php
 
-class LoginForm extends Zend_Form{
-
-    public function __construct($options = null){
+class LoginForm extends Zend_Form
+{
+    public function __construct($options = null)
+    {
         parent::__construct($options);
         $this->setName("Login");
 
@@ -22,7 +23,5 @@ class LoginForm extends Zend_Form{
         $submit->setAttrib("id", "submit");
 
         $this->addElements(array($username, $password, $submit));
-
     }
-
 }

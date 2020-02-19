@@ -1,9 +1,9 @@
 <?php
 
-class UserForm extends Zend_Form{
-
-    public function __construct($options = null){
-
+class UserForm extends Zend_Form
+{
+    public function __construct($options = null)
+    {
         parent::__construct($options);
         $this->setName("User");
 
@@ -36,8 +36,6 @@ class UserForm extends Zend_Form{
 
         $submit = new Zend_Form_Element_Submit("submit");
         $submit->setAttrib("id", "submitbutton");
-        $this->addElements( array($id, $name, $username, $password, $cpassword, $submit) );
-
+        $this->addElements(array($id, $name, $username, $password, $cpassword, $submit));
     }
-
 }

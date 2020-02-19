@@ -4,9 +4,9 @@ ini_set("display_errors", 1);
 date_default_timezone_set("Europe/Lisbon");
 
 //directory setup and class loading
-set_include_path('.' . PATH_SEPARATOR . '../library/' 
-. PATH_SEPARATOR . '../application/models' 
-. PATH_SEPARATOR . get_include_path() );
+set_include_path('.' . PATH_SEPARATOR . '../library/'
+. PATH_SEPARATOR . '../application/models'
+. PATH_SEPARATOR . get_include_path());
 
 include "Zend/Loader.php";
 Zend_Loader::registerAutoload();

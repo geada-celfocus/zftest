@@ -1,10 +1,13 @@
-<?php 
+<?php
 
-class UsersController extends Zend_Controller_Action{
+class UsersController extends Zend_Controller_Action
+{
+    public function indexAction()
+    {
+    }
 
-    public function indexAction(){}
-
-    public function createAction(){
+    public function createAction()
+    {
 
         // initialize form
         $form = new UserForm();
@@ -12,27 +15,21 @@ class UsersController extends Zend_Controller_Action{
 
         $this->view->form = $form;
 
-        if($this->_request->isPost()){
-        
+        if ($this->_request->isPost()) {
             $data = $this->_request->getPost();
 
-            if($form->isValid($data)){
-
+            if ($form->isValid($data)) {
                 $user = new Users();
                 $row = $user->createRow();//create and empty row
                 $row->name = $this->_request->getPost("name");
                 $row->username = $this->_request->getPost("username");
-                $row->password = AuthController::hash_password( $this->_request->getPost("password") );
+                $row->password = AuthController::hash_password($this->_request->getPost("password"));
                 $row->save();//update the empty row data
 
                 $this->_redirect("/auth/login");
-
             } else {
                 $form->populate($data);
             }
-
         }
-
     }
-
 }
