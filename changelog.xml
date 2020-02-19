@@ -27,11 +27,13 @@
         </createTable>
     </changeSet>
     <changeSet author="vagrant (generated)" id="1582025807346-3">
+        <!-- Comment this property if you are using sqlite -->
         <createIndex indexName="sqlite_autoindex_users_1" tableName="users" unique="true">
             <column name="username"/>
         </createIndex>
     </changeSet>
     <changeSet author="vagrant (generated)" id="1582025807346-4">
+        <!-- Comment this property if you are using sqlite -->
         <addForeignKeyConstraint baseColumnNames="access_level" baseTableName="users" constraintName="" deferrable="true" initiallyDeferred="true" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="" referencedTableName="users_access" validate="true"/>
     </changeSet>
 </databaseChangeLog>
