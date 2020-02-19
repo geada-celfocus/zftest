@@ -15,4 +15,4 @@ Authentication test using Zend Framework 1.6.2
 ## Notes
 changelong.xml contains two properties not supported by sqlite: index and foreign key. If you choose to use sqlite, comment the lines (there are comments above both properties)
 
-Don't use the data comming from the changelog. The database is create from the vagrant file and the user should be created by you throught the respective endpoint
+Don't use the data comming from the changelog(not tested). The database is generated from the vagrant file and the user should be created by you, using the respective endpoint
