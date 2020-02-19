@@ -1,2 +1,6 @@
 /library/*
 /.vagrant
+.php_cs.cache
+*.php_cs.dist
+output-file.txt
+php-fixer.bat
