@@ -11,7 +11,6 @@ class AuthAdapter extends Zend_Auth_Adapter_DbTable
         }
         
         $this->_hashPassword = $function;
-
     }
 
     public function authenticate()
@@ -28,10 +27,8 @@ class AuthAdapter extends Zend_Auth_Adapter_DbTable
             }
 
             return false;
-
-        } 
+        }
         
         return false;
-
     }
 }

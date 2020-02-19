@@ -10,8 +10,6 @@ class DashboardController extends Zend_Controller_Action
             $this->_redirect("/auth/login");
         }
 
-        $session = Zend_Auth::getInstance()->getStorage();
-
         $this->view->title = "Dashboard";
     }
 }

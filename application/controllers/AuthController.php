@@ -49,15 +49,25 @@ class AuthController extends Zend_Controller_Action
                     
                     if ($result->isValid()) {
 
+                        // zend framework, by default, saves user identity (a.k.a. username) in session storage
+                        // altough, this way we have access to the user's complete info without needing aditional requests
+                        // Also, this is the session storage relative to the authentication, for adicional data, Zend_Session_Namespace should be used
                         $storage = new Zend_Auth_Storage_Session();
                         $user = $adapter->getResultRowObject(null, array("password"));//get user info(acording to authentication) without password
-                        $storage->write($user);
-                        $auth->setStorage($storage);//create a new session
+                        $storage->write($user);//write user data to the storage
+                        $auth->setStorage($storage);// set storage in the Zend_Auth
+                        //this data can be accessed using $auth->getIdentity() method (stdObj will be returned)
 
                         $users = new Users();
                         $row = $users->fetchRow($users->select()->where('id = ?', $user->id));//select returns a RowSet, while fetch row returns a Row, wich can modify the row directly
                         $row->active = 1;//set user as active
                         $row->save();//update user data
+
+                        // Start user session, usign the zend auth
+                        $userSession = new Zend_Session_Namespace("Zend_Auth");// starts session automatically, Zend_Session::start() could also be used
+                        $userSession->setExpirationSeconds($config->resources->session->remember_me_seconds); // this will allow Zend_Auth to expire
+                        $userSession->color = "#ff0000";// save data in session storage, to test
+
 
                         $this->_redirect("/dashboard");
                     } else {
@@ -76,7 +86,7 @@ class AuthController extends Zend_Controller_Action
         $user = Zend_Auth::getInstance()->getIdentity();
 
         $users = new Users();
-        $row = $users->fetchRow( $users->select()->where("id", $user->id) );
+        $row = $users->fetchRow($users->select()->where("id", $user->id));
         $row->active = 0;
         $row->save();
 
