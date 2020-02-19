@@ -11,3 +11,6 @@ Authentication test using Zend Framework 1.6.2
 + **/auth/logout** -> ends user session and redirects to **/auth/login**
 
 + **/users/create** -> allows the creation of a new user
+
+## Notes
+changelong.xml contains two properties not supported by sqlite: index and foreign key. If you choose to use sqlite, comment the lines (there are comments above the properties indicating to comment the property)
