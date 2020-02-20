@@ -19,6 +19,9 @@ class UsersController extends Zend_Controller_Action
             $data = $this->_request->getPost();
 
             if ($form->isValid($data)) {
+
+                include_once "AuthController.php";
+
                 $user = new Users();
                 $row = $user->createRow();//create and empty row
                 $row->name = $this->_request->getPost("name");

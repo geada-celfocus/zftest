@@ -17,7 +17,9 @@ class AuthAdapter extends Zend_Auth_Adapter_DbTable
     {
         $this->_authenticateSetup();
 
-        $stm = $this->_zendDb->query("SELECT " . $this->_credentialColumn . " FROM " . $this->_tableName . " WHERE " .$this->_identityColumn . "=\"" . $this->_identity . "\";");
+        $stm = $this->_zendDb->query("SELECT " . $this->_credentialColumn 
+            . " FROM " . $this->_tableName 
+            . " WHERE " .$this->_identityColumn . "=\"" . $this->_identity . "\";");
         if ($stm->execute()) {
             $row = $stm->fetchAll();
 
