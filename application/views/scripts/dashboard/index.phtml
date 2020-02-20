@@ -1,9 +1,14 @@
 <?php 
     global $config;
 
-    // this constructor will not overrride an existing session(with the given namespace)
-    // it will rather create one (if there is none available) or retrieve the already existing one
+    // this constructor will not overrride an existing session(with the given
+    // namespace) it will rather create one (if there is none available) or
+    // retrieve the already existing one
     $session = new Zend_Session_Namespace("Zend_Auth");// retieve stored session data
 
 ?>
-<h1>Welcome back, <span style='color: <?php echo $session->color; ?>'><?php echo Zend_Auth::getInstance()->getIdentity()->name; ?></span>!</h1>
+<h1>Welcome back, 
+    <span style='color: <?php echo $session->color; ?>'>
+            <?php echo Zend_Auth::getInstance()->getIdentity()->name; ?>
+    </span>!
+</h1>

@@ -19,8 +19,6 @@ $db = Zend_Db::factory($config->db);
 Zend_Db_Table::setDefaultAdapter($db);
 Zend_Layout::startMvc(array("layoutPath" => "../application/layouts"));
 
-include_once "../application/controllers/AuthController.php";
-
 // Setup controller
 $frontController = Zend_Controller_Front::getInstance();
 $frontController->throwExceptions(true);//testing only, don't display errors to users
