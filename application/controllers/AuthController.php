@@ -42,10 +42,11 @@ class AuthController extends Zend_Controller_Action
                 //set table adapter Add.: Database configuration is defined in
                 // the bootstrap
                 $adapter = new Zend_Auth_Adapter_DbTable(
-                    Zend_Db_Table::getDefaultAdapter(), 
-                    $config->db->params->table->users, 
-                    "username", 
-                    "password");
+                    Zend_Db_Table::getDefaultAdapter(),
+                    $config->db->params->table->users,
+                    "username",
+                    "password"
+                );
                 $adapter->setIdentity($username)
                     ->setCredential(AuthController::hash_password($password));
 
@@ -61,7 +62,7 @@ class AuthController extends Zend_Controller_Action
                         // session storage relative to the authentication, for
                         // adicional data, Zend_Session_Namespace should be used
                         $storage = new Zend_Auth_Storage_Session();
-                        $user = $adapter->getResultRowObject(null, array("password"));/* get user info(acording to 
+                        $user = $adapter->getResultRowObject(null, array("password"));/* get user info(acording to
                         authentication) without password*/
                         $storage->write($user);//write user data to the storage
                         $auth->setStorage($storage);// set storage in the Zend_Auth
@@ -76,7 +77,7 @@ class AuthController extends Zend_Controller_Action
                         $row->save();//update user data
 
                         // Start user session, usign the zend auth
-                        $userSession = new Zend_Session_Namespace("Zend_Auth");/* starts session automatically, 
+                        $userSession = new Zend_Session_Namespace("Zend_Auth");/* starts session automatically,
                         Zend_Session::start() could also be used */
                         $userSession->setExpirationSeconds($config->resources->session->remember_me_seconds);// this will allow Zend_Auth to expire
                         $userSession->color = "#ff0000";// save data in session storage, to test

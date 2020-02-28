@@ -36,11 +36,11 @@ class UserForm extends Zend_Form
 
         $submit = new Zend_Form_Element_Submit("submit");
         $submit->setAttrib("id", "submitbutton");
-        $this->addElements(array($id, 
-            $name, 
-            $username, 
-            $password, 
-            $cpassword, 
+        $this->addElements(array($id,
+            $name,
+            $username,
+            $password,
+            $cpassword,
             $submit));
     }
 }

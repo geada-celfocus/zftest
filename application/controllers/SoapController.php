@@ -80,7 +80,6 @@ class SoapController extends Zend_Controller_Action
         //custom service class, under library/soap/service
         $server->setClass(Soap_Service_User::class);
         $server->handle();
-        
     }
 
     /**
