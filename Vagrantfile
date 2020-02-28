@@ -9,23 +9,31 @@
 # you're doing.
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "levelten/ubuntu64-php5.6"
+  config.vm.define :app do |app|
+    app.vm.box = "levelten/ubuntu64-php5.6"
+    app.vm.network :private_network, ip: "192.168.33.10"
+    app.vm.hostname = "web"
 
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.33.10"
+  end
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-   config.vm.provision "shell", inline: <<-SHELL
+
+  config.vm.define :soap do |soap|
+    soap.vm.box = "levelten/ubuntu64-php5.6"
+    soap.vm.network :private_network, ip: "192.168.33.11"
+    soap.vm.hostname = "soap"
+  end
+
+config.vm.provision "shell", inline: <<-SHELL
      apt-get update
      apt-get install -y unzip
 
-     apt-get install -y sqlite3
+     sudo apt-get install -y sqlite3
 
      # install pdo sqlite driver
-     apt-get install -y php5.6-sqlite
+     sudo apt-get install -y php5.6-sqlite
 
      # Get java for liquibase
      apt-get install -y openjdk-8-jre-headless
@@ -58,6 +66,7 @@ Vagrant.configure("2") do |config|
      sqlite3 /vagrant/zftest.sqlite ".exit"
 
    SHELL
+
 end
 
 # End here

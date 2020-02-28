@@ -1,0 +1,39 @@
+<?php
+
+    if (isset($this->soapFault)) {
+        echo "<p><strong style='color: red'>[".$this->soapFault->getCode() . "]</strong> " . $this->soapFault->getMessage() . "</p>";
+        return;
+    } elseif (isset($this->error)) {
+        echo "<p style='color: red'><strong>Error:</strong> " . $this->error->getMessage() . "</p>";
+        return;
+    }
+
+?>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        if(isset($this->users)):
+            foreach($this->users->_data as $user): ?>
+            <tr>
+                <?php
+                
+                    echo "<td>" . $user["id"] . "</td>";
+                    echo "<td>" . $user["name"] . "</td>";
+                    echo "<td>" . $user["access_level"] . "</td>";
+                    echo "<td>" . $user["active"] . "</td>";
+                
+                ?>
+            </tr>
+        <?php endforeach;
+        endif; ?>
+    </tbody>
+</table>

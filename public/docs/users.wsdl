@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<wsdl:definitions targetNamespace="http://192.168.33.11:8000/index.php" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://192.168.33.11:8000/index.php" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Soap_Service_User">
+	<message name="getUsersRequest"/>
+	<message name="getUsersResponse">
+		<part name="getUsersReturn" type="soap-enc:Array" />
+	</message>
+	<portType name="Soap_Service_UserPort">
+		<operation name="getUsers">
+			<input message="tns:getUsersRequest" />
+			<output message="tns:getUsersResponse" />
+		</operation>
+	</portType>
+	<wsdl:binding name="Soap_Service_UserBinding" type="tns:Soap_Service_UserPort">
+		<operation name="getUsers" soapAction="http://192.168.33.11:8000/soap/users" />
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="getUsers">
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</wsdl:binding>
+	<service name="Soap_Service_UserService">
+		<port name="Soap_Service_UserPort" binding="tns:Soap_Service_UserBinding">
+			<soap:address location="http://192.168.33.11:8000/soap/users" />
+		</port>
+	</service>
+</wsdl:definitions>

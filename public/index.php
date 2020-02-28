@@ -3,6 +3,11 @@ error_reporting(E_ALL|E_STRICT);
 ini_set("display_errors", 1);
 date_default_timezone_set("Europe/Lisbon");
 
+ini_set('soap.wsdl_cache_enabled',0);
+ini_set('soap.wsdl_cache_ttl',0);
+ini_set("display_errors", -1);
+ini_set('default_socket_timeout', 0);
+
 //directory setup and class loading
 set_include_path('.' . PATH_SEPARATOR . '../library/'
 . PATH_SEPARATOR . '../application/models'
