@@ -12,6 +12,8 @@ Authentication test using Zend Framework 1.6.2
 
 + **/users/create** -> allows the creation of a new user
 
++ **/users** -> was suposed to list the users (does a soap request)
+
 ## Note
 The soap server is working, but cannot perform requests anymore. It might have something to do with the
 comunication between machines(the main problem is to fetch the wsdl, the second
@@ -20,6 +22,6 @@ problem is that the server can't interpret it).
 Soap server might not be able to respond if it is in the same server as the
 client. The solution wasto have 2 vms with a server each.
 
-Use **vagrant up app** and **vagrant up soap** to start each machine. In the
+Use **vagrant ssh app** and **vagrant ssh soap** to start each machine. In the
 "app" machine, the server 192.68.33.10 should be used and for the "soap", use
 the .11
